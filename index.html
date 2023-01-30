@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Hoja de personaje y calculo de Tiradas</title>
+</head>
+<body class="text-white bg-dark">
+    <h1>Hoja de personaje Vampiro La Mascarada</h1>
+        <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputEmail">Nombre Jugador(correo electronico)</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Tu nombre o tu correo aqui">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputPJ">Nombre personaje</label>
+            <input type="text" class="form-control" id="inputPJ" placeholder="NombrePJ">
+        </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+            <label for="inputNat">Naturaleza</label>
+            <input type="text" class="form-control" id="inputNat" placeholder="Ver ejemplos en manual">
+            </div>
+            <div class="form-group col-md-6">
+            <label for="inputCond">Conducta</label>
+            <input type="text" class="form-control" id="inputCond" placeholder="Ver ejemplos en manual">
+            </div>
+        </div>
+        <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputConc">Concepto</label>
+            <input type="text" class="form-control" id="inputConc">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputSecta">Secta</label>
+            <select id="inputSecta" class="form-control">
+            <option selected>Elige una Secta ...</option>
+            <option >Camarilla</option>
+            <option >Sabbat</option>
+            <option >Independiente</option>
+            </select>
+        <div class="form-group col-md-4">
+            <label for="clans">Selecciona un clan:</label>
+            <select id="clans" onchange="showDisciplines(this.value)">
+                <option value="">--Seleccione--</option>
+                <option value="Ventrue">Ventrue</option>
+                <option value="Brujah">Brujah</option>
+                <option value="Toreador">Toreador</option>
+                <option value="Tremere">Tremere</option>
+                <option value="Malkavian">Malkavian</option>
+                <option value="Nosferatu">Nosferatu</option>
+                <option value="Gangrel">Gangrel</option>
+                <option value="Lasombra">Lasombra</option>
+                <option value="Tzimisce">Tzimisce</option>
+                <option value="Assamita">Assamita</option>
+                <option value="Followers of Set">Followers of Set</option>
+            </select>
+        </div>
+            <div class="form-group col-md-2">
+                <label for="inputGen">Generacion</label>
+                <input type="number" class="form-control" id="inputGen">
+            </div>
+        </div>
+    <div class="row">
+        <div class="col">FISICOS
+            <label for="inputStr">Fuerza</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputStr">
+        </div>
+        <div class="col">
+            <label for="inputDex">Destreza</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputDex">
+        </div>
+        <div class="col">
+            <label for="inputSta">Resistencia</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputSta">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">SOCIALES
+            <label for="inputCha">Carisma</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputCha">
+        </div>
+        <div class="col">
+            <label for="inputMan">Manipulacion</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputMan">
+        </div>
+        <div class="col">
+            <label for="inputApa">Apariencia</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputApa">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">MENTALES
+            <label for="inputPer">Percepcion</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputPer">
+        </div>
+        <div class="col">
+            <label for="inputInt">Inteligencia</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputInt">
+        </div>
+        <div class="col">
+            <label for="inputAst">Astucia</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputAst">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">TALENTOS
+            <label for="inputAle">Alerta</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputAle">
+        </div>
+        <div class="col">
+            <label for="inputAtl">Atletismo</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputAtl">
+        </div>
+        <div class="col">
+            <label for="inputSub">Subterfugio</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputSub">
+        </div>
+        <div class="col">
+            <label for="inputExp">Expresion</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputExp">
+        </div>
+        <div class="col">
+            <label for="inputInti">Intimidacion</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputInti">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">TECNICAS
+            <label for="inputArm">Armas</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputArm">
+        </div>
+        <div class="col">
+            <label for="inputCc">Cuerpo a cuerpo</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputCc">
+        </div>
+        <div class="col">
+            <label for="inputCondu">Conducir</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputCondu">
+        </div>
+        <div class="col">
+            <label for="inputInter">Interpretacion</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputInter">
+        </div>
+        <div class="col">
+            <label for="inputSig">Sigilo</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputSig">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">CONOCIMIENTOS
+            <label for="inputAca">Academicismo</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputAca">
+        </div>
+        <div class="col">
+            <label for="inputInv">Investigacion</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputInv">
+        </div>
+        <div class="col">
+            <label for="inputTec">Tecnologia</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputTec">
+        </div>
+        <div class="col">
+            <label for="inputInf">Informatica</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputInf">
+        </div>
+        <div class="col">
+            <label for="inputMed">Medicina</label>
+            <input type="number" class="form-control" placeholder="1-5" id="inputMed">
+        </div>
+    </div>
+    <div class="card form my-3" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title text-black">Tiradas comunes</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Estas definen en numero de dados a tirar dependiendo de la situacion</h6>
+            <p class="card-text text-black" id="disciplines"></p>
+        </div>
+    </div>
+    <button class="my-4 " onclick="misCalculos()">Rueda los dados!</button>
+    <!-- <div class="card my-2" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title text-black">Tiradas comunes</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Estas definen en numero de dados a tirar dependiendo de la situacion</h6>
+            <p class="card-text text-black" id="disciplines"></p>
+            <p class="card-text text-black" id="result"></p>
+        </div>
+    </div> -->
+<script src="./Javascript/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
