@@ -1,4 +1,6 @@
+//funcion usada para ingresar los datos utiles del formulario HTML y hacer corroboracion de correcto llenado de datos y calculos de tiradas mas comunes.
 function misCalculos() {
+  //Inputs traidos del formulario html.
     let numGen = document.getElementById("inputGen").value;
     let numStr = document.getElementById("inputStr").value;
     let numDex = document.getElementById("inputDex").value;
@@ -24,12 +26,15 @@ function misCalculos() {
     let numTec = document.getElementById("inputTec").value;
     let numInf = document.getElementById("inputInf").value;
     let numMed = document.getElementById("inputMed").value;
+    //Se verifica que ningun campo este Vacio.
     if(numGen === "" || numStr === "" || numDex === "" || numSta === "" || numCha === "" || numMan === "" || numApa === "" || numPer === "" || numInt === "" || numAst === "" || numAle === "" || numAtl === "" || numSub === "" || numExp === "" || numInti === "" || numArm === "" || numCc === "" || numCondu === "" || numInter === "" || numSig === "" || numAca === "" || numInv === "" || numTec === "" || numInf === "" || numMed === ""){
       alert("Debe llenar todas los campos");
     }
+    //Se verifica que la generacion sea mayor a 10. Ya que asi lo indica el manual de juego.
     if(numGen <10){
       alert("La generacion no puede ser inferior a 10")
     }
+    //El Usuario interactua con un boton y a traves de Prompt. Asi ingresa cual tirada necesita y se le regresa cuantos dados debe tirar con base a lo que lleno en el formulario.
     else{
         const options = ["Investigar", "Conducir","Pelear", "Mentir","Disparar","Esquivar","Alerta al peligro", "Salir"];
         let response = "";
@@ -74,9 +79,12 @@ function misCalculos() {
         }
     }
 }
+// Función para mostrar las disciplinas y las tiradas más comunes correspondientes a cada clan
 function showDisciplines(clan) {
+ // Variables para almacenar las disciplinas y las tiradas más comunes
   let disciplines = "";
   let rolls = "";
+  // Selecciona las disciplinas y las tiradas más comunes correspondientes al clan seleccionado
   switch (clan) {
           case "Ventrue":
             disciplines = "Presencia, Dominación, Fortaleza";
@@ -119,5 +127,6 @@ function showDisciplines(clan) {
             disciplines = "Presencia, Serpents Tongue, Setite";
             break;
         }
+  // Muestra las disciplinas y las tiradas más comunes en el div con id "disciplines"
   document.getElementById("disciplines").innerHTML = `Disciplinas: ${disciplines}<br>Tiradas comunes: ${rolls}`;
 }
